@@ -3,7 +3,7 @@ import random
 import os
 
 class mkQuiz:
-    # 퀴즈만드는 클래스: 초기입력변수로 question, options, answer를 받는다.
+    # 이 클래스로 객체가 만들어질 때, 자동작동되는 메서드. 초기입력변수로 question, options, answer를 받는다.
     def __init__(self, question, options, answer):
         self.question = question
         self.options = options
@@ -17,8 +17,13 @@ class mkQuiz:
         }
 
 class Quizgame:
+    # 이 클래스로 객체가 만들어질 때, 자동작동되는 메서드. 초기입력변수는 없음.
     def __init__(self):
-        pass
+        self.json_data = 'quiz_data.json'
+        self.quiz_list = []
+        self.high_score = 0
+        self.load_quiz_list()
+        self.load_high_score()
     
     def run(self):
 
@@ -29,7 +34,7 @@ class Quizgame:
             print("3. 퀴즈 목록 보기")
             print("4. 최고 점수 확인")
             print("5. 종료")
-            choice = input("원하는 번호를 입력하시오 (1-5): ").strip()
+            choice = input("원하는 메뉴의 번호를 입력하시오 (1-5): ").strip()
             
             if choice == '1':
                 self.create_quiz()
