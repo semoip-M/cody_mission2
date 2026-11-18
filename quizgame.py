@@ -16,3 +16,8 @@ class mkQuiz:
             'answer': self.answer
         }
 
+class Quizgame:
+    pass
+
+if __init__ == '__main__':
+    print('hello')
