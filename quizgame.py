@@ -22,8 +22,18 @@ class Quizgame:
         self.json_data = 'quiz_data.json'
         self.quiz_list = []
         self.high_score = 0
-        self.load_quiz_list()
+        self.load_data()
         self.load_high_score()
+
+    def load_data(self):
+        """json파일에서 데이터를 읽어오거나, 없으면 초기 데이터 생성한다."""
+        if os.path.exists(self.json_data):
+            with open(self.json_data, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                for item in data:
+                    quiz = mkQuiz(item['question'], item['options'], item['answer'])
+                    self.quiz_list.append(quiz)
+
     
     def run(self):
 
