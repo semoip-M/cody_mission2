@@ -23,7 +23,7 @@ class Quizgame:
         self.quiz_list = []
         self.high_score = 0
         self.load_data()
-        self.load_high_score()
+        self.show_high_score()
 
     def load_data(self):
         """json파일에서 데이터를 읽어오거나, 없으면 초기 데이터 생성한다."""
@@ -33,6 +33,10 @@ class Quizgame:
                 for item in data:
                     quiz = mkQuiz(item['question'], item['options'], item['answer'])
                     self.quiz_list.append(quiz)
+    
+    def show_high_score(self):
+        """최고 점수 출력"""
+        print(f"\n🏆 현재 최고 점수: {self.high_score}점")
 
     
     def run(self):
@@ -53,7 +57,7 @@ class Quizgame:
             elif choice == '3':
                 self.view_quiz_list()
             elif choice == '4':
-                self.check_high_score()
+                self.show_high_score()
             elif choice == '5':
                 print("게임을 종료합니다.")
                 break
@@ -64,6 +68,3 @@ class Quizgame:
 if __name__ == '__main__':
     play = Quizgame()
     play.run()
-
-print("branch_1 test")
-print('asdf')
