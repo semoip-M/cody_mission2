@@ -61,10 +61,34 @@ class Quizgame:
         with open(self.json_data, 'w', encoding='utf-8') as f:
             json.dump(data, f, ensure_ascii=False, indent=4) # json파일에 데이터(최고점수,퀴즈데이터)를 저장.
 
+    def add_quiz(self):
+        """퀴즈 추가"""
+        print("\n--- 새로운 퀴즈 추가 ---")
+        question = input("\n추가할 퀴즈 질문을 입력하시오: ").strip()
+        options = []
+        for i in range(1, 5):
+            option = input(f"선택지 {i}를 입력하시오: ").strip()
+            options.append(option)
+        while True:
+            try:
+                answer = int(input("정답 선택지 번호를 입력하시오 (1-4): ").strip())
+                if 1 <= answer <= 4:
+                    break
+                else:
+                    print("1~4 사이의 숫자를 입력해주세요.")
+            except ValueError:
+                print("숫자만 입력 가능")
+        new_quiz = mkQuiz(question, options, answer)
+        self.quizzes.append(new_quiz)
+        self.save_data()
+        print("\n✅ 퀴즈가 성공적으로 추가되었습니다.")
+
+    def play_quiz(self):
+        
+
     def show_high_score(self):
         """최고 점수 출력"""
         print(f"\n🏆 현재 최고 점수: {self.high_score}점")
-
     
     def run(self):
 
@@ -78,11 +102,11 @@ class Quizgame:
             choice = input("원하는 메뉴의 번호를 입력하시오 (1-5): ").strip()
             
             if choice == '1':
-                self.create_quiz()
+                self.play_quiz()
             elif choice == '2':
                 self.add_quiz()
             elif choice == '3':
-                self.view_quiz_list()
+                self.show_quiz_list()
             elif choice == '4':
                 self.show_high_score()
             elif choice == '5':
