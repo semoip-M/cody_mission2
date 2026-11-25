@@ -120,6 +120,15 @@ class Quizgame:
             self.high_score = score
             self.save_data()
 
+    def show_quiz_list(self):
+        """퀴즈 목록 출력"""
+        if not self.quizzes:
+            print("\n❌ 퀴즈가 없습니다. 먼저 퀴즈를 추가해주세요.")
+            return
+        print("\n📋 현재 퀴즈 목록:")
+        for idx, quiz in enumerate(self.quizzes, start=1):
+            print(f"{idx}. {quiz.question}")
+        print("-----------------------------")
 
     def show_high_score(self):
         """최고 점수 출력"""
@@ -149,7 +158,6 @@ class Quizgame:
                 break
             else:
                 print("\n 잘못된 선택입니다. 1~5 사이의 숫자를 입력해주세요.")
-
 
 if __name__ == '__main__':
     play = Quizgame()
