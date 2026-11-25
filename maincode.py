@@ -31,7 +31,7 @@ class Quizgame:
                 with open(self.json_data, 'r', encoding='utf-8') as f: # json파일을 읽기모드로 열고, 인코딩은 utf-8로 설정
                     data = json.load(f) # json파일을 읽어서 data에 저장
                     self.high_score = data.get('high_score', 0) # json파일에서 high_score를 읽어오고, 없으면 0으로 설정
-                    for item in data: # json파일의 각 항목을 반복
+                    for item in data.get('quizzes'): # json파일의 각 항목을 반복
                         quiz = mkQuiz(item['question'], item['options'], item['answer']) # mkQuiz class로 객체 quiz를 생성. item은 dict형태.
                         self.quizzes.append(quiz) # 생성된 quiz 객체를 quizzes 리스트에 추가
             except (json.JSONDecodeError, KeyError): # json파일이 잘못되었거나, key가 없을 경우
@@ -82,16 +82,50 @@ class Quizgame:
         self.quizzes.append(new_quiz)
         self.save_data()
         print("\n✅ 퀴즈가 성공적으로 추가되었습니다.")
-
+    
     def play_quiz(self):
+        """퀴즈 게임 진행"""
+        if not self.quizzes:
+            print("\n❌ 퀴즈가 없습니다. 먼저 퀴즈를 추가해주세요.")
+            return
+
+        num_to_select = min(len(self.quizzes), 5)
+        selected_quizzes = random.sample(self.quizzes, num_to_select)
+        print(f"\n🚀 퀴즈를 시작합니다! (총 {num_to_select}문제)")
+
+        score = 0
+        for quiz in selected_quizzes:
+            print(f"\n질문: {quiz.question}")
+            for idx, option in enumerate(quiz.options, start=1):
+                print(f"{idx}. {option}")
+            while True:
+                try:
+                    user_answer = int(input("정답 선택지 번호를 입력하시오 (1-4): ").strip())
+                    if 1 <= user_answer <= 4:
+                        break
+                    else:
+                        print("1~4 사이의 숫자를 입력해주세요.")
+                except ValueError:
+                    print("숫자만 입력 가능")
+            if user_answer == quiz.answer:
+                print("✅ 정답입니다!")
+                score += 1
+            else:
+                print(f"❌ 오답입니다. 정답은 {quiz.answer}번입니다.")
         
+        print(f"\n게임 종료! 당신의 점수는 {score}점입니다.")
+
+        if score > self.high_score:
+            print(f"🔥 최고 점수 경신! {self.high_score} -> {score}")
+            self.high_score = score
+            self.save_data()
 
     def show_high_score(self):
         """최고 점수 출력"""
         print(f"\n🏆 현재 최고 점수: {self.high_score}점")
     
     def run(self):
-
+        """메인 루프"""
         while True:
             print("\n퀴즈 게임 메뉴:")
             print("1. 퀴즈 풀기")
