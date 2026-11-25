@@ -83,9 +83,6 @@ class Quizgame:
         self.save_data()
         print("\n✅ 퀴즈가 성공적으로 추가되었습니다.")
 
-    def play_quiz(self):
-        
-
     def show_high_score(self):
         """최고 점수 출력"""
         print(f"\n🏆 현재 최고 점수: {self.high_score}점")
