@@ -82,14 +82,14 @@
             "answer": 3
         },
         {
-            "question": "dfdf",
+            "question": "Which one is the main color of Korean soccer uniform?",
             "options": [
-                "23f",
-                "2f",
-                "\u001b[B\u001b[D\u001b[C\u001b[D",
-                "12121"
+                "red",
+                "blue",
+                "green",
+                "yellow"
             ],
-            "answer": 3
+            "answer": 1
         }
     ]
 }

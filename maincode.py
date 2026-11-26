@@ -35,6 +35,7 @@ class Quizgame:
                         quiz = mkQuiz(item['question'], item['options'], item['answer']) # mkQuiz class로 객체 quiz를 생성. item은 dict형태.
                         self.quizzes.append(quiz) # 생성된 quiz 객체를 quizzes 리스트에 추가
             except (json.JSONDecodeError, KeyError): # json파일이 잘못되었거나, key가 없을 경우
+                print("❌ json 파일이 잘못되었습니다. 초기 데이터를 설정합니다.")
                 self.set_initial_data() # json파일이 잘못되었을 경우 초기 데이터를 설정하는 메서드 호출
         else:
             self.set_initial_data() # json파일이 없으면 초기 데이터를 설정하는 메서드 호출
@@ -160,5 +161,18 @@ class Quizgame:
                 print("\n 잘못된 선택입니다. 1~5 사이의 숫자를 입력해주세요.")
 
 if __name__ == '__main__':
-    play = Quizgame()
-    play.run()
+    try:
+        game = Quizgame()
+        game.run()
+
+    except (KeyboardInterrupt, EOFError):
+        print("\n게임 종료 요청을 받았습니다.")
+
+        if game is not None:
+            try:
+                game.save_data()
+                print("게임 데이터가 저장되었습니다.")
+            except Exception as e:
+                print(f"데이터 저장 실패: {e}")
+
+        print("게임을 안전하게 종료합니다.")
