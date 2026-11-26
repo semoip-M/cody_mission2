@@ -93,3 +93,18 @@ clone: 원격 저장소를 로컬에 복제하여 Git 작업을 할 수 있게 �
 `브랜치를 생성하고 병합할 수 있다.` : git branch 명령어로 브랜치를 생성할 수 있다. 브랜치는 다른 버전의 작업을 추가하거나 여러 작업이 동시에 진행될 때 사용된다. git merge로 병합할 수 있는데, 이는 다른 브랜치에서 발생한 작업을 다른 브랜치에 합칠 때 사용된다.  
 
 
+## 9. 작업 결과 예시
+- [퀴즈게임 play 예시](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/quiz%EA%B2%8C%EC%9E%84%20%EC%8B%A4%ED%96%89%20%EC%98%88%EC%8B%9C.png)
+
+- [퀴즈 목록보기/최고점수확인/종료](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/%ED%80%B4%EC%A6%88%20%EB%AA%A9%EB%A1%9D%EB%B3%B4%EA%B8%B0_%EC%B5%9C%EA%B3%A0%EC%A0%90%EC%88%98%ED%99%95%EC%9D%B8_%EC%A2%85%EB%A3%8C.png)
+
+- [퀴즈 추가 예시](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/%ED%80%B4%EC%A6%88%EC%B6%94%EA%B0%80%20%EC%98%88%EC%8B%9C.png)
+
+- [퀴즈 게임 실행 중 잘못된 입력/강제 종료 방지](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/%ED%80%B4%EC%A6%88%EA%B2%8C%EC%9E%84%EC%8B%A4%ED%96%89%EC%A4%91_%EC%9E%98%EB%AA%BB%EB%90%9C%EC%9E%85%EB%A0%A5%EC%8B%9C_%EA%B0%95%EC%A0%9C%EC%A2%85%EB%A3%8C%EB%B0%A9%EC%A7%80.png)
+
+- [브랜치 활용과 merge 예시](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/%EA%B8%B0%EB%8A%A5%EB%B3%84%EB%B8%8C%EB%9E%9C%EC%B9%98%ED%99%9C%EC%9A%A9%EA%B3%BCmerge%20%EC%98%88%EC%8B%9C.png)
+
+- [git pull 예시](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/git_pull_example.png)
+
+- [git add/commit/push 예시](https://github.com/semoip-M/cody_mission2/blob/main/screenshots/git_add_commit_push_status%20%EC%98%88%EC%8B%9C.png)
+
